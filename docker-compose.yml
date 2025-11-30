@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  redis:
+    image: redis:8.4
+    container_name: alone-christmas-redis
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: ${UPSTASH_REDIS_TOKEN}
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --requirepass ${UPSTASH_REDIS_TOKEN}
+
+volumes:
+  redis_data:
