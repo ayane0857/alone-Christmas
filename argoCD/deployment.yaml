@@ -22,3 +22,16 @@ spec:
           image: registry.uniproject.jp/ayane/alone-christmas-site:0.1.3
           ports:
             - containerPort: 3000
+          env:
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: REDIS_PORT
+                  key: redis-secret
+            - name: UPSTASH_REDIS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: UPSTASH_REDIS_TOKEN
+                  key: redis-secret
