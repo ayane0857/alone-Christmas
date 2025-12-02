@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alone-christmas-app
+  labels:
+    app: alone-christmas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alone-christmas
+  template:
+    metadata:
+      labels:
+        app: alone-christmas
+    spec:
+      containers:
+        - name: web
+          image: registry.uniproject.jp/ayane/alone-christmas:1.0.0
+          ports:
+            - containerPort: 3000
