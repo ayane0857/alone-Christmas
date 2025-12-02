@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Inter, Noto_Sans_JP } from "next/font/google";
-import { FaXTwitter } from "react-icons/fa6";
+import {BsSun, BsMoon, BsTwitterX} from "react-icons/bs"
 import React from 'react';// 追加
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Moon, Sun } from "lucide-react"
 import { useTheme } from 'next-themes';
 const InterFont = Inter({
   weight: "400",
@@ -112,9 +111,9 @@ export default function Home() {
     <>
     <div className="absolute top-6 right-6 flex flex-row gap-3">
       <div className="flex items-center space-x-2">
-        <Sun className="h-6 w-6" />
+        <BsSun className="h-6 w-6" />
         <Switch checked={theme === "dark"} onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")} /> {/* 追加 */}
-        <Moon className="h-6 w-6" />
+        <BsMoon className="h-6 w-6" />
       </div>
       <a href="https://twitter.com/intent/tweet?text=みんなでクリスマスを迎えよう&url=https%3A%2F%2Falone-christmas.me&hashtags=クリぼっちカウンター"
         target="_blank"
@@ -122,7 +121,7 @@ export default function Home() {
         className="group relative inline-flex items-center justify-center w-12 h-12 bg-accent hover:bg-accent/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
         aria-label="クリスマスをツイッターで共有
       ">
-        <FaXTwitter className="w-8 h-8 text-accent-foreground" />
+        <BsTwitterX className="w-8 h-8 text-accent-foreground" />
       </a>
     </div>
     <div
