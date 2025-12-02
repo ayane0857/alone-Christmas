@@ -22,7 +22,7 @@ spec:
           ports:
             - containerPort: 6379
           env:
-            - name: REDIS_PASSWORD
+            - name: UPSTASH_REDIS_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: redis-secret
