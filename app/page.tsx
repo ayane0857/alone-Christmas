@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Inter, Noto_Sans_JP } from "next/font/google";
+import { FaXTwitter } from "react-icons/fa6";
 const InterFont = Inter({
   weight: "400",
   subsets: ["latin"],
@@ -102,6 +103,12 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
   return (
+    <>
+    <div className="absolute top-4 right-4 bg-gray-500 rounded-lg p-2 hover:bg-gray-200 transition-colors">
+      <a href="https://twitter.com/intent/tweet?text=みんなでクリスマスを迎えよう&url=https%3A%2F%2Falone-christmas.me&hashtags=クリぼっちカウンター">
+        <FaXTwitter className="w-8 h-8 text-white" />
+      </a>
+    </div>
     <div
       className={`min-h-screen flex items-center justify-center gap-16 ${InterFont.className}`}
     >
@@ -122,5 +129,6 @@ export default function Home() {
         </p>
       </div>
     </div>
+    </>
   );
 }
