@@ -3,6 +3,11 @@
 import { useEffect, useState } from "react";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import { FaXTwitter } from "react-icons/fa6";
+import React from 'react';// 追加
+import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from 'next-themes';
 const InterFont = Inter({
   weight: "400",
   subsets: ["latin"],
@@ -102,20 +107,31 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
+  const { theme, setTheme } = useTheme();
   return (
     <>
-    <div className="absolute top-4 right-4 bg-gray-500 rounded-lg p-2 hover:bg-gray-200 transition-colors">
-      <a href="https://twitter.com/intent/tweet?text=みんなでクリスマスを迎えよう&url=https%3A%2F%2Falone-christmas.me&hashtags=クリぼっちカウンター">
-        <FaXTwitter className="w-8 h-8 text-white" />
+    <div className="absolute top-6 right-6 flex flex-row gap-3">
+      <div className="flex items-center space-x-2">
+        <Sun className="h-6 w-6" />
+        <Switch checked={theme === "dark"} onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")} /> {/* 追加 */}
+        <Moon className="h-6 w-6" />
+      </div>
+      <a href="https://twitter.com/intent/tweet?text=みんなでクリスマスを迎えよう&url=https%3A%2F%2Falone-christmas.me&hashtags=クリぼっちカウンター"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative inline-flex items-center justify-center w-12 h-12 bg-accent hover:bg-accent/90 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        aria-label="クリスマスをツイッターで共有
+      ">
+        <FaXTwitter className="w-8 h-8 text-accent-foreground" />
       </a>
     </div>
     <div
       className={`min-h-screen flex items-center justify-center gap-16 ${InterFont.className}`}
     >
-      <p className="text-3xl md:text-6xl">
+      <p className="text-3xl md:text-6xl w-[350px] md:w-[400px]">
         {timeLeft.days}:{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
       </p>
-      <div className="border-l border-black h-36"></div>
+      <div className="border-l border  h-36"></div>
       <div>
         <p
           className={`text-xl md:text-3xl ${NotoSansJPFont.className} font-light`}
