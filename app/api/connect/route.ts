@@ -13,8 +13,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // セッションを60秒のTTLで保存
-    await redis.setex(`session:${sessionId}`, 60, Date.now().toString());
+    // セッションを30秒のTTLで保存
+    await redis.setex(`session:${sessionId}`, 30, Date.now().toString());
 
     // 現在の接続数を取得
     const keys = await redis.keys("session:*");
