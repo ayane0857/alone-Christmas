@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alone-christmas
+  labels:
+    app: alone-christmas
+spec:
+  type: ClusterIP
+  selector:
+    app: alone-christmas
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000

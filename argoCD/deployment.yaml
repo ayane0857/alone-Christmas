@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alone-christmas-app
+  labels:
+    app: alone-christmas
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: alone-christmas
+  template:
+    metadata:
+      labels:
+        app: alone-christmas
+    spec:
+      imagePullSecrets:
+        - name: internal-harbor
+      containers:
+        - name: web
+          image: registry.uniproject.jp/ayane/alone-christmas-site:0.1.5
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: redis-port
+            - name: UPSTASH_REDIS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: upstash-redis-token

@@ -1,9 +1,9 @@
 "use client";
 
+import React from "react";
 import { useEffect, useState } from "react";
 import { Inter, Noto_Sans_JP } from "next/font/google";
-import {BsSun, BsMoon, BsTwitterX} from "react-icons/bs"
-import React from 'react';// 追加
+import { BsSun, BsMoon, BsTwitterX } from "react-icons/bs";
 import Snowfall from '@/components/ui/snowfall';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -142,10 +142,29 @@ export default function Home() {
         <p
           className={`text-3xl md:text-6xl ${NotoSansJPFont.className} font-normal`}
         >
-          <span className={InterFont.className}>{activeConnections}</span>人
-        </p>
+          <BsTwitterX className="w-8 h-8 text-accent-foreground" />
+        </a>
       </div>
-    </div>
+      <div
+        className={`min-h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6 md:px-0 ${InterFont.className}`}
+      >
+        <p className="text-3xl md:text-6xl w-full max-w-[400px] text-center md:text-left">
+          {timeLeft.days}:{timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
+        </p>
+        <div className="hidden md:block border-l border h-36" />
+        <div className="w-full max-w-[400px] text-center md:text-left">
+          <p
+            className={`text-xl md:text-3xl ${NotoSansJPFont.className} font-light`}
+          >
+            現在のクリぼっちの人数
+          </p>
+          <p
+            className={`text-3xl md:text-6xl ${NotoSansJPFont.className} font-normal`}
+          >
+            <span className={InterFont.className}>{activeConnections}</span>人
+          </p>
+        </div>
+      </div>
     </>
   );
 }
