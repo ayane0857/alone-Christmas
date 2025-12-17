@@ -19,7 +19,7 @@ spec:
         - name: internal-harbor
       containers:
         - name: web
-          image: registry.uniproject.jp/ayane/alone-christmas-site:0.1.5
+          image: registry.uniproject.jp/ayane/alone-christmas-site:1.0.1
           ports:
             - containerPort: 3000
           env:
