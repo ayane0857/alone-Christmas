@@ -14,11 +14,11 @@ export async function POST(req: NextRequest) {
     }
 
     // TTLを更新
-    const exists = await redis.expire(`session:${sessionId}`, 60);
+    const exists = await redis.expire(`session:${sessionId}`, 30);
 
     if (!exists) {
       // セッションが存在しない場合は再作成
-      await redis.setex(`session:${sessionId}`, 60, Date.now().toString());
+      await redis.setex(`session:${sessionId}`, 30, Date.now().toString());
     }
 
     const keys = await redis.keys("session:*");
