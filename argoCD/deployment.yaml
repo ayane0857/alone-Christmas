@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alone-christmas-app
+  name: alone-christmas
   labels:
     app: alone-christmas
 spec:
